@@ -75,13 +75,14 @@
                         >Search for music groups</label>
                     <input
                         type="text"
-                        id="searchInput"
+                        id="search-input"
                         placeholder="Search for music groups..."
                         class="form-control mb-3"
                     />
-                    <button class="btn btn-primary" id="searchBtn">
+                    <button class="btn btn-primary" id="search-btn">
                         Search
                     </button>
+                    <button class="btn btn-primary" id="clear-btn">Clear search</button>
                 </div>
 
                 <div
@@ -90,7 +91,7 @@
                     <div class="col-md-7 col-lg-10">
                         <div class="row mb-2 text-center">
                             <div class="col-md-12 themed-grid-head-col">
-                                Music Groups
+                                <h2 id="music-group-count">Music Groups</h2>
                             </div>
                         </div>
                         <div class="row mb-2 text-center" id="list-of-items">

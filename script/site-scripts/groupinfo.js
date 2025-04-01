@@ -36,6 +36,11 @@ async function getMusicGroupArtists(artistId) {
 
 await getMusicGroupData();
 
+
+
+
+
+
 (async () => {
     window.onload = showGroups();
 
