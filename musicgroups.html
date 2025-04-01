@@ -1,92 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
 
-    <title>Barbone template</title>
+        <title>Barbone template</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="./favicon_io/site.webmanifest">
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./favicon_io/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./favicon_io/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./favicon_io/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./favicon_io/site.webmanifest" />
 
-    <!-- Bootstrap styles from their respective templates -->
-    <link href="./css/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/bootstrap/navbars-offcanvas.css" rel="stylesheet">
-    <link href="./css/bootstrap/features.css" rel="stylesheet">
-    <link href="./css/bootstrap/grid.css" rel="stylesheet">
-    <link href="./css/bootstrap/sign-in.css" rel="stylesheet">
-    <link href="./css/bootstrap/modals.css" rel="stylesheet">
-</head>
-<!-- Header and Menu -->
+        <!-- Bootstrap styles from their respective templates -->
+        <link href="./css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link href="./css/bootstrap/navbars-offcanvas.css" rel="stylesheet" />
+        <link href="./css/bootstrap/features.css" rel="stylesheet" />
+        <link href="./css/bootstrap/grid.css" rel="stylesheet" />
+        <link href="./css/bootstrap/sign-in.css" rel="stylesheet" />
+        <link href="./css/bootstrap/modals.css" rel="stylesheet" />
+    </head>
+    <!-- Header and Menu -->
 
-<body>
+    <body>
+        <div class="container">
+            <header
+                class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+            >
+                <a
+                    href="./index.html"
+                    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+                >
+                    <span class="fs-4">My favorite Quotes</span>
+                </a>
 
-    <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <a href="./index.html"
-                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <span class="fs-4">My favorite Quotes</span>
-            </a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a href="./index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./quotes.html" class="nav-link">Quotes</a>
+                    </li>
+                </ul>
+            </header>
+        </div>
 
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="./index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="./quotes.html" class="nav-link">Quotes</a></li>
-            </ul>
-        </header>
-    </div>
+        <main>
+            <!-- Individual pages -->
+            <!-- Page List of groups -->
+            <div class="container px-4 py-4">
+                <h2 class="pb-2 border-bottom">List of music groups</h2>
 
-    <main>
-
-        <!-- Individual pages -->
-        <!-- Page List of groups -->
-        <div class="container px-4 py-4">
-            <h2 class="pb-2 border-bottom">List of quotes</h2>
-
-            <button class="btn btn-primary" id="clearBtn">Clear list</button>
+                <!-- <button class="btn btn-primary" id="clearBtn">Clear list</button>
             <button class="btn btn-primary" id="loveQBtn">List love quotes</button>
-            <button class="btn btn-primary" id="allQBtn">List all quotes</button>
+            <button class="btn btn-primary" id="allQBtn">List all quotes</button> -->
 
-            <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5">
-                <div class="col-md-7 col-lg-10">
-                    <div class="row mb-2 text-center">
-                        <div class="col-md-12 themed-grid-head-col">Quotes</div>
-                    </div>
-                    <div class="row mb-2 text-center" id="list-of-items">
-                        <div class="col-md-12 themed-grid-col d-none">
-                            AC/DC
+                <div class="mb-3">
+                    <label for="searchInput" class="form-label"
+                        >Search for music groups</label>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search for music groups..."
+                        class="form-control mb-3"
+                    />
+                    <button class="btn btn-primary" id="searchBtn">
+                        Search
+                    </button>
+                </div>
+
+                <div
+                    class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5"
+                >
+                    <div class="col-md-7 col-lg-10">
+                        <div class="row mb-2 text-center">
+                            <div class="col-md-12 themed-grid-head-col">
+                                Music Groups
+                            </div>
                         </div>
+                        <div class="row mb-2 text-center" id="list-of-items">
+                            <div class="col-md-12 themed-grid-col d-none">
+                                AC/DC
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="prevBtn">
+                            Prev
+                        </button>
+                        <button class="btn btn-primary" id="nextBtn">
+                            Next
+                        </button>
                     </div>
-                    <button class="btn btn-primary" id="prevBtn">Prev</button>
-                    <button class="btn btn-primary" id="nextBtn">Next</button>
                 </div>
             </div>
+        </main>
+
+        <!-- Part of page Frame -->
+        <!-- Footer with copyright notice -->
+        <div class="container">
+            <footer
+                class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+            >
+                <div class="col-md-4 d-flex align-items-center">
+                    <a
+                        href="./index.html"
+                        class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
+                    >
+                        <span class="mb-3 mb-md-0 text-body-secondary"
+                            >&copy; 2025 Seido AB</span
+                        >
+                    </a>
+                </div>
+            </footer>
         </div>
-    </main>
 
+        <!-- Part of page Frame -->
+        <!-- Bootstrap Javascript -->
+        <script src="./script/bootstrap/bootstrap.bundle.min.js"></script>
 
-    <!-- Part of page Frame -->
-    <!-- Footer with copyright notice -->
-    <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <div class="col-md-4 d-flex align-items-center">
-                <a href="./index.html" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                    <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2025 Seido AB</span>
-                </a>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Part of page Frame -->
-    <!-- Bootstrap Javascript -->
-    <script src="./script/bootstrap/bootstrap.bundle.min.js"></script>
-
-    <!-- SeidoAB script helpers -->
-    <script src="./script/seido/modals.js"></script>
-    <script src="./script/seido/select-list-items.js"></script>
-    <script type="module" src="./script/site-scripts/musicgroups.js"></script>
-</body>
+        <!-- SeidoAB script helpers -->
+        <script src="./script/seido/modals.js"></script>
+        <script src="./script/seido/select-list-items.js"></script>
+        <script
+            type="module"
+            src="./script/site-scripts/musicgroups.js"
+        ></script>
+    </body>
 </html>
