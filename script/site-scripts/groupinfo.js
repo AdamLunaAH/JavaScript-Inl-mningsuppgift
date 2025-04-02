@@ -34,12 +34,11 @@ async function getMusicGroupArtists(artistId) {
     // return artistData;
 }
 
+async function getMusicGroupAlbums() {
+    albumData = await _service.readAlbumDtoAsync(albumId);
+}
+
 await getMusicGroupData();
-
-
-
-
-
 
 (async () => {
     window.onload = showGroups();
@@ -76,6 +75,7 @@ await getMusicGroupData();
 
         groupInfo.appendChild(div);
         await groupArtists();
+        await groupAlbums();
 
         // }
 
@@ -90,6 +90,18 @@ await getMusicGroupData();
                 artistDiv.appendChild(artistsP);
             }
             groupInfo.appendChild(artistDiv);
+        }
+
+        async function groupAlbums() {
+            const albumDiv = document.createElement("div");
+            for (const album of groupData.artistsId) {
+                await getMusicGroupAlbums(album);
+                const albumP = document.createElement("p");
+                albumP.classList.add("lead", "fw-bold", "mb-3");
+                albumP.innerText = albumData.name;
+                albumDiv.appendChild(albumP);
+            }
+            groupInfo.appendChild(albumDiv);
         }
     }
 })();
