@@ -34,7 +34,10 @@ async function getMusicGroupArtists(artistId) {
     // return artistData;
 }
 
-async function getMusicGroupAlbums() {
+async function getMusicGroupAlbums(albumId) {
+    // const albumss = await _service.readAlbumsAsync(0, true);
+
+    // console.log(albumss);
     albumData = await _service.readAlbumDtoAsync(albumId);
 }
 
@@ -94,7 +97,8 @@ await getMusicGroupData();
 
         async function groupAlbums() {
             const albumDiv = document.createElement("div");
-            for (const album of groupData.artistsId) {
+            for (const album of groupData.albumsId) {
+                console.log(album);
                 await getMusicGroupAlbums(album);
                 const albumP = document.createElement("p");
                 albumP.classList.add("lead", "fw-bold", "mb-3");
