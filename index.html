@@ -23,6 +23,9 @@
     <link href="./css/bootstrap/grid.css" rel="stylesheet">
     <link href="./css/bootstrap/sign-in.css" rel="stylesheet">
     <link href="./css/bootstrap/modals.css" rel="stylesheet">
+
+    <!-- Custom / override css -->
+     <link rel="stylesheet" href="./css/custom.css">
 </head>
 
 <!-- Part of page Frame -->
@@ -70,7 +73,7 @@
         </symbol>
     </svg>
 
-    <div class="container">
+    <!-- <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
             <a href="/"
                 class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
@@ -83,7 +86,47 @@
 
             </ul>
         </header>
-    </div>
+    </div> -->
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Header navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">Music info</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarHead">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./musicgroups.html">Music groups</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="./about.html">About</a>
+                        </li> -->
+                        <!-- <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                aria-expanded="false">Dropdown</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li> -->
+                    </ul>
+                    <!-- <form role="search">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    </form> -->
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
 
     <main>
 
@@ -93,8 +136,8 @@
             <div class="bg-body-tertiary p-5 rounded">
                 <!-- Page web-api-info -->
                 <div class="container px-4 py-4" id="webapi-info">
-                    <h2 class="pb-2 border-bottom">WebApi info</h2>
-                    <p>Below you see an overview of the content presented by the WebApi.</p>
+                    <h2 class="pb-2 border-bottom">Music info</h2>
+                    <p>Below you see an overview of content in the music-database</p>
 
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 py-5">
                         <div class="col d-flex align-items-start">
@@ -148,13 +191,14 @@
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <div class="col-md-4 d-flex align-items-center">
                 <a href="./index.html" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                    <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2023 Seido AB</span>
+                    <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2025 Snow Production Studio</span>
                 </a>
             </div>
         </footer>
     </div>
 
     <!-- Part of page Frame -->
+     
     <!-- Bootstrap Javascript -->
     <script src="./script/bootstrap/bootstrap.bundle.min.js"></script>
     <script type="module" src="./script/site-scripts/index.js"></script>

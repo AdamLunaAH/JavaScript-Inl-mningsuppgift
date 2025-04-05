@@ -136,9 +136,24 @@ async function getMusicGroupsData() {
 
         for (const item of data.pageItems) {
             const div = document.createElement("div");
-            div.classList.add("col-md-12", "themed-grid-col");
+            div.classList.add(
+                "col-md-12",
+                "themed-grid-col",
+                "d-flex",
+                "justify-content-evenly"
+            );
 
-            div.innerText = item.name + " " + item.establishedYear;
+            const mgName = document.createElement("p");
+            mgName.classList.add("music-group-name");
+            mgName.innerText = item.name;
+
+            div.appendChild(mgName);
+
+            const mgYear = document.createElement("p");
+            mgYear.classList.add("music-group-year");
+            mgYear.innerText = item.establishedYear;
+            div.appendChild(mgYear)
+            // div.innerText = item.name + " " + item.establishedYear;
             // div.innerText = item.establishedYear;
             const link = document.createElement("a");
             link.href = `groupinfo.html?id=${item.musicGroupId}`;
