@@ -15,41 +15,33 @@ let searchInput = "";
 let listDivNr = 1;
 
 // Checks if the search input is null or whitespace and returns true or false
-async function isNullOrWhiteSpace(str) {
+function isNullOrWhiteSpace(str) {
     return str == null || str.trim().length === 0;
 }
 
 // Gets the music groups data from the service
 async function getMusicGroupsData() {
     // Gets the music groups data from the service depending on the search input
-    await isNullOrWhiteSpace(searchInput).then(async (result) => {
+    if (isNullOrWhiteSpace(searchInput)) {
         // If the search input is null or whitespace, get all music groups
-        if (result) {
-            data = await _service.readMusicGroupsAsync(currentPageNr, true);
-            // console.log("nullOrWhiteSpaceTrue=", searchInput);
-        }
+        data = await _service.readMusicGroupsAsync(currentPageNr, true);
+    } else {
         // If the search input is not null or whitespace, get the music groups that match the search input
         /*
             Note: When searching it checks all group data to find a match, that means that if you search for "J" it will find groups that have "J" in any of the fields, not just the name.
             For example if you search for "J" it will find groups that does not a "J" in the name but are within the Jazz genre.
             I noticed this  quite late in the project and I did not have time to fix it, without breaking list paging and search function.
             */
-        else {
-            data = await _service.readMusicGroupsAsync(
-                currentPageNr,
-                true,
-                searchInput
-            );
-            // console.log("nullOrWhiteSpaceFalse=", searchInput);
-        }
-    });
+        data = await _service.readMusicGroupsAsync(
+            currentPageNr,
+            true,
+            searchInput
+        );
+    }
 }
 
 // async functions
 (async () => {
-    // On load event, show the music groups
-    window.onload = showGroups();
-
     // Gets the main div element
     const _list = document.querySelector("#list-of-items");
 
@@ -103,14 +95,14 @@ async function getMusicGroupsData() {
 
     // Paging
     function clickHandlerNext(e) {
-        if (currentPageNr < data.pageCount - 1) {
+        if (data?.pageCount && currentPageNr < data.pageCount - 1) {
             currentPageNr++;
         }
         clickHandlerAll();
     }
 
     function clickHandlerPrev(e) {
-        if (currentPageNr > 0) {
+        if (data?.pageCount && currentPageNr > 0) {
             currentPageNr--;
         }
         clickHandlerAll();
@@ -143,10 +135,10 @@ async function getMusicGroupsData() {
         await getMusicGroupsData();
 
         // Checks if its the first or last page
-        await pageButtonCheck();
+        pageButtonCheck();
 
         // Updates the music group count
-        await musicGroupCount();
+        musicGroupCount();
 
         // Default div number
         // Used to changes the background color of the list item div
@@ -156,24 +148,16 @@ async function getMusicGroupsData() {
         for (const item of data.pageItems) {
             const div = document.createElement("div");
 
-            // If the listDivNr is even, add theme-even
-            if (listDivNr % 2 === 0) {
-                div.classList.add(
-                    "col-md-12",
-                    "theme-even",
-                    "d-flex",
-                    "justify-content-evenly"
-                );
-            }
-            // If the listDivNr is odd, add theme-odd
-            else {
-                div.classList.add(
-                    "col-md-12",
-                    "theme-odd",
-                    "d-flex",
-                    "justify-content-evenly"
-                );
-            }
+            // If the listDivNr is even, add theme-even, else add theme-odd
+
+            const themeClass = listDivNr % 2 === 0 ? "theme-even" : "theme-odd";
+            div.classList.add(
+                "col-md-12",
+                themeClass,
+                "d-flex",
+                "justify-content-evenly"
+            );
+
             // Increments the listDivNr
             listDivNr++;
 
@@ -208,4 +192,7 @@ async function getMusicGroupsData() {
             _list.removeChild(_list.firstChild);
         }
     }
+
+    // Show the music groups on load
+    await showGroups();
 })();

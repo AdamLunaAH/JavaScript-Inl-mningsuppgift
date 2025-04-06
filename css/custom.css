@@ -107,11 +107,13 @@
     border-radius: 0.3rem;
     padding: 0.5rem;
     margin-bottom: 0.3rem;
+    max-height: 4rem;
 }
 .theme-odd p,
 .theme-even p {
     margin: 0;
     padding: 0rem 1rem 0rem 1rem;
+
 }
 
 /* List table of contents style */
@@ -127,4 +129,5 @@
 
 #list-of-items {
     margin-bottom: 1rem;
+    min-height: 400px;
 }

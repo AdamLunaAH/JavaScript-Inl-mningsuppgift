@@ -8,31 +8,15 @@
             "type": "node",
             "request": "launch",
             "name": "node.js debugging",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
+            "skipFiles": ["<node_internals>/**"],
             "program": "${workspaceFolder}/${relativeFile}"
         },
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Chrome index.html",
-            "url": "http://localhost:5501/${relativeFileDirname}/index.html",
+            "name": "Start index.html",
+            "url": "http://localhost:5501/index.html",
             "webRoot": "${workspaceFolder}"
-        },
-        {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Chrome ../index.html",
-            "url": "http://localhost:5501/${relativeFileDirname}/../index.html",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
-            "type": "chrome",
-            "request": "launch",
-            "name": "React Chrome",
-            "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}"
-          }
+        }
     ]
 }

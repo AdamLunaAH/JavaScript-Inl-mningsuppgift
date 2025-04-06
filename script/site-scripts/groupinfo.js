@@ -16,39 +16,23 @@ const urlParams = new Proxy(new URLSearchParams(window.location.search), {
 
 // Default values
 let groupData = [];
-let artistData = [];
-let albumData = [];
 
 // Gets the music groups data from the service
 async function getMusicGroupData() {
-    groupData = await _service.readMusicGroupDtoAsync(urlParams.id);
-    // console.log(groupData);
+    groupData = await _service.readMusicGroupAsync(urlParams.id, false);
 }
-
-// Gets the music group artist data from the service
-async function getMusicGroupArtists(artistId) {
-    artistData = await _service.readArtistDtoAsync(artistId);
-}
-
-// Gets the music group album data from the service
-async function getMusicGroupAlbums(albumId) {
-    albumData = await _service.readAlbumDtoAsync(albumId);
-}
-
-// Runs the get music group data function
-await getMusicGroupData();
 
 // async functions
 (async () => {
-    // On load event, run the show the music group data function
-    window.onload = showGroupData();
-
     // Present the music group data on the page
     async function showGroupData() {
+        // Runs the get music group data function
+        await getMusicGroupData();
+        // await getMusicGroupGenres();
         // Gets the main div element
         const groupInfo = document.querySelector("#group-info");
 
-        // Creates the music group header div and adds the music group name and established year
+        // Creates the music group header div and adds the music group name, established year, and genre
         const divHeader = document.createElement("div");
         divHeader.classList.add("col-sm-12");
         const h1 = document.createElement("h1");
@@ -56,10 +40,15 @@ await getMusicGroupData();
         h1.innerText = groupData.name;
         divHeader.appendChild(h1);
 
-        const p = document.createElement("p");
-        p.classList.add("fs-4", "mb-3", "text-center");
-        p.innerText = `Established: ${groupData.establishedYear}`;
-        divHeader.appendChild(p);
+        const pY = document.createElement("p");
+        pY.classList.add("fs-4", "mb-3", "text-center");
+        pY.innerText = `Established: ${groupData.establishedYear}`;
+        divHeader.appendChild(pY);
+
+        const pG = document.createElement("p");
+        pG.classList.add("fs-4", "mb-3", "text-center");
+        pG.innerText = `Genre: ${groupData.strGenre}`;
+        divHeader.appendChild(pG);
 
         groupInfo.appendChild(divHeader);
 
@@ -86,31 +75,24 @@ await getMusicGroupData();
             h2.classList.add("display-6", "fw-light", "text-center");
             h2.innerText = "Members";
             membersInfoDiv.appendChild(h2);
+
             const membersDiv = document.createElement("div");
 
-            // Loop through the music group members and get their data
-            // and add them to the members div
-            for (const artist of groupData.artistsId) {
-                await getMusicGroupArtists(artist);
-                // If the listDivNr is even, add theme-even
-                if (memberNr % 2 === 0) {
-                    const artistsP = document.createElement("p");
-                    artistsP.classList.add("theme-even");
-                    artistsP.innerText =
-                        artistData.firstName + " " + artistData.lastName;
-                    membersDiv.appendChild(artistsP);
-                }
-                // If the listDivNr is odd, add theme-odd
-                else {
-                    const artistsP = document.createElement("p");
-                    artistsP.classList.add("theme-odd");
-                    artistsP.innerText =
-                        artistData.firstName + " " + artistData.lastName;
-                    membersDiv.appendChild(artistsP);
-                }
+            // Fetch artist data from groupData
+            const artists = groupData.artists;
+            // Loop through the music group members and add them to the members div
+            for (const artist of artists) {
+                const artistP = document.createElement("p");
+                // If the listDivNr is even, add theme-even, else add theme-odd
+                artistP.classList.add(
+                    memberNr % 2 === 0 ? "theme-even" : "theme-odd"
+                );
+                artistP.innerText = `${artist.firstName} ${artist.lastName}`;
+                membersDiv.appendChild(artistP);
                 memberNr++;
-                membersInfoDiv.appendChild(membersDiv);
             }
+
+            membersInfoDiv.appendChild(membersDiv);
             infoDiv.appendChild(membersInfoDiv);
         }
 
@@ -127,30 +109,29 @@ await getMusicGroupData();
             h2.classList.add("display-6", "fw-light", "text-center");
             h2.innerText = "Albums";
             albumsInfoDiv.appendChild(h2);
+
             const albumsDiv = document.createElement("div");
 
-            // Loop through the music group albums and get their data
-            // and add them to the members div
-            for (const album of groupData.albumsId) {
-                await getMusicGroupAlbums(album);
-                // If the listDivNr is even, add theme-even
-                if (albumNr % 2 === 0) {
-                    const albumP = document.createElement("p");
-                    albumP.classList.add("theme-even");
-                    albumP.innerText = albumData.name;
-                    albumsDiv.appendChild(albumP);
-                }
-                // If the listDivNr is odd, add theme-odd
-                else {
-                    const albumP = document.createElement("p");
-                    albumP.classList.add("theme-odd");
-                    albumP.innerText = albumData.name;
-                    albumsDiv.appendChild(albumP);
-                }
+            // Fetch album data from groupData
+            const albums = groupData.albums;
+
+            // Loop through the music group albums and add them to the members div
+            for (const album of albums) {
+                const albumP = document.createElement("p");
+                // If the listDivNr is even, add theme-even, else add theme-odd
+                albumP.classList.add(
+                    albumNr % 2 === 0 ? "theme-even" : "theme-odd"
+                );
+                albumP.innerText = album.name;
+                albumsDiv.appendChild(albumP);
                 albumNr++;
-                albumsInfoDiv.appendChild(albumsDiv);
             }
+
+            albumsInfoDiv.appendChild(albumsDiv);
             infoDiv.appendChild(albumsInfoDiv);
         }
     }
+
+    // Show the music group data on load
+    await showGroupData();
 })();

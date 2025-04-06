@@ -21,6 +21,4 @@ import musicService from "../database-script/music-group-services.js";
 
     const artistCount = document.querySelector("#count-artists");
     artistCount.innerText = `${data.db.nrSeededArtists} artists`;
-
 })();
-
