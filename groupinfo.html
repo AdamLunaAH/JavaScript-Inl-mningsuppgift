@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="" />
+        <meta name="description" content="Music info" />
         <meta name="author" content="" />
 
         <title>Group info</title>
@@ -36,27 +36,45 @@
         <link href="./css/bootstrap/modals.css" rel="stylesheet" />
     </head>
     <body>
-        <div class="container">
-            <header
-                class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+        <header>
+            <nav
+                class="navbar navbar-expand-lg navbar-dark bg-dark"
+                aria-label="Header navbar"
             >
-                <a
-                    href="./index.html"
-                    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
-                >
-                    <span class="fs-4">My favorite Quotes</span>
-                </a>
+                <div class="container">
+                    <a class="navbar-brand" href="#">Music info</a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarHead"
+                        aria-controls="navbarHead"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <a href="./index.html" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="./quotes.html" class="nav-link">Quotes</a>
-                    </li>
-                </ul>
-            </header>
-        </div>
+                    <div class="collapse navbar-collapse" id="navbarHead">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link active"
+                                    aria-current="page"
+                                    href="./index.html"
+                                    >Home</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./musicgroups.html"
+                                    >Music groups</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
 
 

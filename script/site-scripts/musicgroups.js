@@ -9,6 +9,7 @@ const _service = new musicService(
 let data = [];
 let currentPageNr = 0;
 let searchInput = "";
+let listDivNr = 1;
 
 // async function getMusicGroupsData() {
 //     data = await _service.readMusicGroupsAsync(currentPageNr, true);
@@ -68,6 +69,17 @@ async function getMusicGroupsData() {
 
     const searchBtn = document.querySelector("#search-btn");
     searchBtn.addEventListener("click", clickHandlerSearch);
+
+    const searchInputBox = document.querySelector("#search-input");
+    searchInputBox.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            searchInput = searchInputBox.value;
+            clearSearch();
+            showGroups();
+            musicGroupCount();
+        }
+    });
 
     function clickHandlerAll(e) {
         clearSearch();
@@ -134,14 +146,33 @@ async function getMusicGroupsData() {
         await pageButtonCheck();
         await musicGroupCount();
 
+        listDivNr = 1;
+
         for (const item of data.pageItems) {
             const div = document.createElement("div");
-            div.classList.add(
-                "col-md-12",
-                "themed-grid-col",
-                "d-flex",
-                "justify-content-evenly"
-            );
+
+            if (listDivNr % 2 === 0) {
+                div.classList.add(
+                    "col-md-12",
+                    "theme-even",
+                    "d-flex",
+                    "justify-content-evenly"
+                );
+            } else {
+                div.classList.add(
+                    "col-md-12",
+                    "theme-odd",
+                    "d-flex",
+                    "justify-content-evenly"
+                );
+            }
+            listDivNr++;
+            // div.classList.add(
+            //     "col-md-12",
+            //     "themed-grid-col",
+            //     "d-flex",
+            //     "justify-content-evenly"
+            // );
 
             const mgName = document.createElement("p");
             mgName.classList.add("music-group-name");
@@ -152,7 +183,7 @@ async function getMusicGroupsData() {
             const mgYear = document.createElement("p");
             mgYear.classList.add("music-group-year");
             mgYear.innerText = item.establishedYear;
-            div.appendChild(mgYear)
+            div.appendChild(mgYear);
             // div.innerText = item.name + " " + item.establishedYear;
             // div.innerText = item.establishedYear;
             const link = document.createElement("a");

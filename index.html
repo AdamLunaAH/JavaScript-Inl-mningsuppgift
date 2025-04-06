@@ -1,176 +1,179 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
-<!-- Part of page Frame -->
-<!-- html-head with all resources -->
+    <!-- Part of page Frame -->
+    <!-- html-head with all resources -->
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Martin Lenart, Seido AB">
+    <head>
 
-    <title>Barbone template</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="./favicon_io/site.webmanifest">
+        <title>Music Info</title>
 
-    <!-- Bootstrap styles from their respective templates -->
-    <link href="./css/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/bootstrap/navbars-offcanvas.css" rel="stylesheet">
-    <link href="./css/bootstrap/features.css" rel="stylesheet">
-    <link href="./css/bootstrap/grid.css" rel="stylesheet">
-    <link href="./css/bootstrap/sign-in.css" rel="stylesheet">
-    <link href="./css/bootstrap/modals.css" rel="stylesheet">
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./favicon_io/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./favicon_io/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./favicon_io/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./favicon_io/site.webmanifest" />
 
-    <!-- Custom / override css -->
-     <link rel="stylesheet" href="./css/custom.css">
-</head>
+        <!-- Bootstrap styles from their respective templates -->
+        <link href="./css/bootstrap/bootstrap.css" rel="stylesheet" />
+        <link href="./css/bootstrap/navbars-offcanvas.css" rel="stylesheet" />
+        <link href="./css/bootstrap/features.css" rel="stylesheet" />
+        <link href="./css/bootstrap/grid.css" rel="stylesheet" />
+        <link href="./css/bootstrap/sign-in.css" rel="stylesheet" />
+        <link href="./css/bootstrap/modals.css" rel="stylesheet" />
 
-<!-- Part of page Frame -->
-<!-- Header and Menu -->
+        <!-- Custom / override css -->
+        <link rel="stylesheet" href="./css/custom.css" />
+    </head>
 
-<body>
-    <!-- SVG icons for buttons etc-->
-    <svg xmlns="http://www.w3.org/2000/svg">
-        <symbol id="home" viewBox="0 0 16 16">
-            <path
-                d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
-        </symbol>
-        <symbol id="edit" viewBox="0 0 16 16">
-            <path
-                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-            <path fill-rule="evenodd"
-                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
-        </symbol>
-        <symbol id="undo" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z" />
-            <path
-                d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466" />
-        </symbol>
-        <symbol id="save" viewBox="0 0 16 16">
-            <path d="M11 2H9v3h2z" />
-            <path
-                d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
-        </symbol>
-        <symbol id="boombox" viewBox="0 0 16 16">
-            <path
-                d="M14 0a.5.5 0 0 1 .5.5V2h.5a1 1 0 0 1 1 1v2H0V3a1 1 0 0 1 1-1h12.5V.5A.5.5 0 0 1 14 0M2 3.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m7.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m1.5-.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0M9.5 3h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1M6 10.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m7 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m.5-1.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
-            <path
-                d="M0 6h16v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm2 4.5a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0m7 0a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0" />
-        </symbol>
-        <symbol id="album" viewBox="0 0 16 16">
-            <path d="M8 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4m0 3a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0" />
-        </symbol>
-        <symbol id="artist" viewBox="0 0 16 16">
-            <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2" />
-            <path fill-rule="evenodd" d="M12 3v10h-1V3z" />
-            <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1z" />
-            <path fill-rule="evenodd"
-                d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5" />
-        </symbol>
-    </svg>
+    <!-- Part of page Frame -->
+    <!-- Header and Menu -->
 
-    <!-- <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <a href="/"
-                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <span class="fs-4">Seido WebApi template</span>
-            </a>
 
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="./index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="./musicgroups.html" class="nav-link">Music groups</a></li>
+    <body>
 
-            </ul>
-        </header>
-    </div> -->
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Header navbar">
-            <div class="container">
-                <a class="navbar-brand" href="#">Music info</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
-                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarHead">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./musicgroups.html">Music groups</a>
-                        </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="./about.html">About</a>
-                        </li> -->
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                                aria-expanded="false">Dropdown</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+
+            <header>
+                <nav
+                    class="navbar navbar-expand-lg navbar-dark bg-dark"
+                    aria-label="Header navbar"
+                >
+                    <div class="container">
+                        <a class="navbar-brand" href="#">Music info</a>
+                        <button
+                            class="navbar-toggler"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarHead"
+                            aria-controls="navbarHead"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                        >
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarHead">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a
+                                        class="nav-link active"
+                                        aria-current="page"
+                                        href="./index.html"
+                                        >Home</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a
+                                        class="nav-link"
+                                        href="./musicgroups.html"
+                                        >Music groups</a
+                                    >
+                                </li>
                             </ul>
-                        </li> -->
-                    </ul>
-                    <!-- <form role="search">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    </form> -->
-                </div>
-            </div>
-        </nav>
-    </header>
-
-
-
-    <main>
-
-        <!-- Individual pages -->
-        <!-- Page Welcome -->
-        <div class="container px-4 py-4" id="home">
-            <div class="bg-body-tertiary p-5 rounded">
-                <!-- Page web-api-info -->
-                <div class="container px-4 py-4" id="webapi-info">
-                    <h2 class="pb-2 border-bottom">Music info</h2>
-                    <p>Below you see an overview of content in the music-database</p>
-
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 py-5">
-                        <div class="col d-flex align-items-start">
-                            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                                <use xlink:href="#boombox" />
-                            </svg>
-                            <div>
-                                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Music groups</h3>
-                                <p id="count-groups">Some music groups</p>
-                            </div>
                         </div>
-                        <div class="col d-flex align-items-start">
-                            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                                <use xlink:href="#album" />
-                            </svg>
-                            <div>
-                                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Albums</h3>
-                                <p id="count-albums">Some albums</p>
-                            </div>
-                        </div>
-                        <div class="col d-flex align-items-start">
-                            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                                <use xlink:href="#artist" />
-                            </svg>
-                            <div>
-                                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Artists</h3>
-                                <p id="count-artists">Some Artists</p>
+                    </div>
+                </nav>
+            </header>
+
+        <div class="container">
+            <main>
+                <!-- Individual pages -->
+                <!-- Page Welcome -->
+                <div class="container px-4 py-4" id="home">
+                    <div class="bg-body-tertiary p-5 rounded">
+                        <!-- Page web-api-info -->
+                        <div class="container px-4 py-4" id="webapi-info">
+                            <h2 class="pb-2 border-bottom">Music info</h2>
+                            <p>
+                                Below you see an overview of content in the
+                                music-database
+                            </p>
+
+                            <div
+                                class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 py-5"
+                            >
+                                <div class="col d-flex align-items-start">
+                                    <svg
+                                        class="bi text-body-secondary flex-shrink-0 me-3"
+                                        width="1.75em"
+                                        height="1.75em"
+                                    >
+                                        <use
+                                            xlink:href="./img/icons.svg#boombox"
+                                        />
+                                    </svg>
+                                    <div>
+                                        <h3
+                                            class="fw-bold mb-0 fs-4 text-body-emphasis"
+                                        >
+                                            Music groups
+                                        </h3>
+                                        <p id="count-groups">
+                                            Some music groups
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col d-flex align-items-start">
+                                    <svg
+                                        class="bi text-body-secondary flex-shrink-0 me-3"
+                                        width="1.75em"
+                                        height="1.75em"
+                                    >
+                                        <use
+                                            xlink:href="./img/icons.svg#album"
+                                        />
+                                    </svg>
+                                    <div>
+                                        <h3
+                                            class="fw-bold mb-0 fs-4 text-body-emphasis"
+                                        >
+                                            Albums
+                                        </h3>
+                                        <p id="count-albums">Some albums</p>
+                                    </div>
+                                </div>
+                                <div class="col d-flex align-items-start">
+                                    <svg
+                                        class="bi text-body-secondary flex-shrink-0 me-3"
+                                        width="1.75em"
+                                        height="1.75em"
+                                    >
+                                        <use
+                                            xlink:href="./img/icons.svg#artist"
+                                        />
+                                    </svg>
+                                    <div>
+                                        <h3
+                                            class="fw-bold mb-0 fs-4 text-body-emphasis"
+                                        >
+                                            Artists
+                                        </h3>
+                                        <p id="count-artists">Some Artists</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <p>
+                    <!-- <p>
                 Artists
             <ul id="artists"></ul>
             </p>
@@ -180,28 +183,115 @@
             <ul id="albums"></ul>
             </p>
 
-            <p id="albumDetail"></p>
+            <p id="albumDetail"></p> -->
+                </div>
+            </main>
         </div>
-    </main>
+
+        <!-- Footer with copyright notice -->
+        <div class="container">
+            <footer class="py-3 my-4">
+                <p class="text-center text-body-secondary border-top pt-3 mt-4">
+                    &copy; 2025 Snow Production Studio
+                </p>
 
 
-    <!-- Part of page Frame -->
-    <!-- Footer with copyright notice -->
-    <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <div class="col-md-4 d-flex align-items-center">
-                <a href="./index.html" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                    <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2025 Snow Production Studio</span>
-                </a>
-            </div>
-        </footer>
-    </div>
+            </footer>
+        </div>
 
-    <!-- Part of page Frame -->
-     
-    <!-- Bootstrap Javascript -->
-    <script src="./script/bootstrap/bootstrap.bundle.min.js"></script>
-    <script type="module" src="./script/site-scripts/index.js"></script>
-</body>
+        <div
+            class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
+        >
+            <button
+                class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+                id="bd-theme"
+                type="button"
+                aria-expanded="false"
+                data-bs-toggle="dropdown"
+                aria-label="Toggle theme (auto)"
+            >
+                <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+                    <use href="./img/theme.svg#circle-half"></use>
+                </svg>
+                <span class="visually-hidden" id="bd-theme-text"
+                    >Toggle theme</span
+                >
+            </button>
+            <ul
+                class="dropdown-menu dropdown-menu-end shadow"
+                aria-labelledby="bd-theme-text"
+            >
+                <li>
+                    <button
+                        type="button"
+                        class="dropdown-item d-flex align-items-center"
+                        data-bs-theme-value="light"
+                        aria-pressed="false"
+                    >
+                        <svg
+                            class="bi me-2 opacity-50"
+                            width="1em"
+                            height="1em"
+                        >
+                            <use href="./img/theme.svg#sun-fill"></use>
+                        </svg>
+                        Light
+                        <svg class="bi ms-auto d-none" width="1em" height="1em">
+                            <use href="./img/theme.svg#check2"></use>
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        class="dropdown-item d-flex align-items-center"
+                        data-bs-theme-value="dark"
+                        aria-pressed="false"
+                    >
+                        <svg
+                            class="bi me-2 opacity-50"
+                            width="1em"
+                            height="1em"
+                        >
+                            <use href="./img/theme.svg#moon-stars-fill"></use>
+                        </svg>
+                        Dark
+                        <svg class="bi ms-auto d-none" width="1em" height="1em">
+                            <use href="./img/theme.svg#check2"></use>
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        class="dropdown-item d-flex align-items-center active"
+                        data-bs-theme-value="auto"
+                        aria-pressed="true"
+                    >
+                        <svg
+                            class="bi me-2 opacity-50"
+                            width="1em"
+                            height="1em"
+                        >
+                            <use href="./img/theme.svg#circle-half"></use>
+                        </svg>
+                        Auto
+                        <svg class="bi ms-auto d-none" width="1em" height="1em">
+                            <use href="./img/theme.svg#check2"></use>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
 
+        <!-- Part of page Frame -->
+
+        <!-- Bootstrap Javascript -->
+        <script src="./script/bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="./script/bootstrap/color-modes.js"></script>
+
+        <!-- Site scripts -->
+        <script type="module" src="./script/site-scripts/index.js"></script>
+
+    </body>
 </html>

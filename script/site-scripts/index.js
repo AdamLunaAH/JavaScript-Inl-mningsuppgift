@@ -20,17 +20,17 @@ import musicService from "../database-script/music-group-services.js";
     const artistCount = document.querySelector("#count-artists");
     artistCount.innerText = `${data.db.nrSeededArtists} artists`;
 
-    const artistList = document.querySelector("#artists");
-    let _data = await _service.readArtistsAsync(0);
+    // const artistList = document.querySelector("#artists");
+    // let _data = await _service.readArtistsAsync(0);
 
-    console.log(_data);
-    for (const item of _data.pageItems) {
-        const li = document.createElement("li");
-        li.innerText = `${item.firstName}`;
-        artistList.appendChild(li);
-    };
+    // console.log(_data);
+    // for (const item of _data.pageItems) {
+    //     const li = document.createElement("li");
+    //     li.innerText = `${item.firstName}`;
+    //     artistList.appendChild(li);
+    // };
 
-    console.log(artistList);
+    // console.log(artistList);
 
     console.log("sup");
 })();
