@@ -30,17 +30,15 @@
         <!-- Bootstrap styles from their respective templates -->
         <link href="./css/bootstrap/bootstrap.min.css" rel="stylesheet" />
         <link href="./css/bootstrap/navbars-offcanvas.css" rel="stylesheet" />
-        <!-- <link href="./css/bootstrap/features.css" rel="stylesheet" /> -->
-        <!-- <link href="./css/bootstrap/grid.css" rel="stylesheet" /> -->
-        <!-- <link href="./css/bootstrap/sign-in.css" rel="stylesheet" /> -->
-        <!-- <link href="./css/bootstrap/modals.css" rel="stylesheet" /> -->
+        <link href="./css/bootstrap/modals.css" rel="stylesheet">
+        <link href="./css/bootstrap/sign-in.css" rel="stylesheet" />
 
         <!-- Custom / override css -->
         <link rel="stylesheet" href="./css/custom.css" />
     </head>
-    <!-- Header and Menu -->
 
     <body>
+        <!-- Header with hamburger menu on small screens -->
         <header>
             <nav
                 class="navbar navbar-expand-lg navbar-dark bg-dark"
@@ -79,13 +77,13 @@
             </nav>
         </header>
 
+        <!-- Main -->
         <main>
-            <!-- Individual pages -->
-            <!-- Page List of groups -->
 
             <div class="container-sm">
                 <h1 class="pb-2 border-bottom">List of music groups</h1>
 
+                <!-- Search form with clear search -->
                 <div class="mb-3">
                     <label for="searchInput" class="form-label"
                         >Search for music groups</label
@@ -104,10 +102,13 @@
                     </button>
                 </div>
 
+                <!-- Music group list -->
                 <section
                     class="container-sm d-flex flex-column align-items-center"
                 >
+                    <!-- Presents the number och music groups, when searching the updates the amount -->
                     <h2 id="music-group-count">Music groups</h2>
+                    <!-- "Table of content" -->
                     <div class="row w-100">
                         <div
                             class="col-md-12 d-flex justify-content-evenly toc border-bottom"
@@ -117,23 +118,10 @@
                             <p>Group info</p>
                         </div>
                     </div>
+                    <!-- List of music groups -->
                     <div class="row" id="list-of-items">
-                        <div
-                            class="col-md-12 theme-odd d-flex justify-content-evenly"
-                        >
-                            <p class="music-group-name">
-                                The Creedence Creedence
-                            </p>
-                            <p class="music-group-year">2025</p>
-                            <a
-                                href="groupinfo.html?id=9535f09c-22e3-4381-b556-00028331650b"
-                                class="btn btn-primary btn-sm btn-block"
-                                role="button"
-                                aria-pressed="true"
-                                >Go to group info</a
-                            >
-                        </div>
                     </div>
+                    <!-- Page buttons, Disables the button is there is no next or previous page -->
                     <div class="f-flex">
                         <button class="btn btn-primary" id="prevBtn">
                             Prev
@@ -146,16 +134,16 @@
             </div>
         </main>
 
-        <!-- Part of page Frame -->
-        <!-- Footer with copyright notice -->
+        <!-- Footer -->
         <div class="container">
             <footer class="py-3 my-4">
                 <p class="text-center text-body-secondary border-top pt-3 mt-4">
-                    &copy; 2025 Snow Production Studio
+                    &copy; 2025 Snow Production Studios
                 </p>
             </footer>
         </div>
 
+        <!-- Color mode change, fixed to the bottom right of the screen -->
         <div
             class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
         >
@@ -241,7 +229,6 @@
             </ul>
         </div>
 
-        <!-- Part of page Frame -->
         <!-- Bootstrap Javascript -->
         <script src="./script/bootstrap/bootstrap.bundle.min.js"></script>
 

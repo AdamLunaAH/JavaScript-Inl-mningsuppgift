@@ -4,10 +4,9 @@
     <!-- html-head with all resources -->
 
     <head>
-
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="" />
+        <meta name="description" content="Home page" />
         <meta name="author" content="" />
 
         <title>Music Info</title>
@@ -34,70 +33,58 @@
         <!-- Bootstrap styles from their respective templates -->
         <link href="./css/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="./css/bootstrap/navbars-offcanvas.css" rel="stylesheet" />
-        <link href="./css/bootstrap/features.css" rel="stylesheet" />
-        <link href="./css/bootstrap/grid.css" rel="stylesheet" />
+        <link href="./css/bootstrap/modals.css" rel="stylesheet">
         <link href="./css/bootstrap/sign-in.css" rel="stylesheet" />
-        <link href="./css/bootstrap/modals.css" rel="stylesheet" />
 
         <!-- Custom / override css -->
         <link rel="stylesheet" href="./css/custom.css" />
     </head>
 
-    <!-- Part of page Frame -->
-    <!-- Header and Menu -->
-
-
     <body>
+        <!-- Header with hamburger menu on small screens -->
+        <header>
+            <nav
+                class="navbar navbar-expand-lg navbar-dark bg-dark"
+                aria-label="Header navbar"
+            >
+                <div class="container">
+                    <a class="navbar-brand" href="#">Music info</a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarHead"
+                        aria-controls="navbarHead"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-
-
-
-            <header>
-                <nav
-                    class="navbar navbar-expand-lg navbar-dark bg-dark"
-                    aria-label="Header navbar"
-                >
-                    <div class="container">
-                        <a class="navbar-brand" href="#">Music info</a>
-                        <button
-                            class="navbar-toggler"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#navbarHead"
-                            aria-controls="navbarHead"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation"
-                        >
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-
-                        <div class="collapse navbar-collapse" id="navbarHead">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a
-                                        class="nav-link active"
-                                        aria-current="page"
-                                        href="./index.html"
-                                        >Home</a
-                                    >
-                                </li>
-                                <li class="nav-item">
-                                    <a
-                                        class="nav-link"
-                                        href="./musicgroups.html"
-                                        >Music groups</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="collapse navbar-collapse" id="navbarHead">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link active"
+                                    aria-current="page"
+                                    href="./index.html"
+                                    >Home</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./musicgroups.html"
+                                    >Music groups</a
+                                >
+                            </li>
+                        </ul>
                     </div>
-                </nav>
-            </header>
+                </div>
+            </nav>
+        </header>
 
+        <!-- Main content of the page -->
         <div class="container">
             <main>
-                <!-- Individual pages -->
-                <!-- Page Welcome -->
                 <div class="container px-4 py-4" id="home">
                     <div class="bg-body-tertiary p-5 rounded">
                         <!-- Page web-api-info -->
@@ -173,32 +160,20 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <p>
-                Artists
-            <ul id="artists"></ul>
-            </p>
-
-            <p>
-                Albums
-            <ul id="albums"></ul>
-            </p>
-
-            <p id="albumDetail"></p> -->
                 </div>
             </main>
         </div>
 
-        <!-- Footer with copyright notice -->
+        <!-- Footer -->
         <div class="container">
             <footer class="py-3 my-4">
                 <p class="text-center text-body-secondary border-top pt-3 mt-4">
-                    &copy; 2025 Snow Production Studio
+                    &copy; 2025 Snow Production Studios
                 </p>
-
-
             </footer>
         </div>
 
+        <!-- Color mode change, fixed to the bottom right of the screen -->
         <div
             class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
         >
@@ -284,14 +259,11 @@
             </ul>
         </div>
 
-        <!-- Part of page Frame -->
-
         <!-- Bootstrap Javascript -->
         <script src="./script/bootstrap/bootstrap.bundle.min.js"></script>
         <script src="./script/bootstrap/color-modes.js"></script>
 
         <!-- Site scripts -->
         <script type="module" src="./script/site-scripts/index.js"></script>
-
     </body>
 </html>
