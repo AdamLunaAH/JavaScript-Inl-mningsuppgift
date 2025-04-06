@@ -1,62 +1,59 @@
 "use strict";
 
+// Import the service class
 import musicService from "../database-script/music-group-services.js";
 
+//Initialize the service
 const _service = new musicService(
     `https://seido-webservice-307d89e1f16a.azurewebsites.net/api`
 );
 
+// Default values
 let data = [];
 let currentPageNr = 0;
 let searchInput = "";
+let listDivNr = 1;
 
-// async function getMusicGroupsData() {
-//     data = await _service.readMusicGroupsAsync(currentPageNr, true);
-// }
-
+// Checks if the search input is null or whitespace and returns true or false
 async function isNullOrWhiteSpace(str) {
     return str == null || str.trim().length === 0;
 }
 
+// Gets the music groups data from the service
 async function getMusicGroupsData() {
+    // Gets the music groups data from the service depending on the search input
     await isNullOrWhiteSpace(searchInput).then(async (result) => {
+        // If the search input is null or whitespace, get all music groups
         if (result) {
             data = await _service.readMusicGroupsAsync(currentPageNr, true);
-            console.log("nullOrWhiteSpaceTrue=", searchInput);
-        } else {
+            // console.log("nullOrWhiteSpaceTrue=", searchInput);
+        }
+        // If the search input is not null or whitespace, get the music groups that match the search input
+        /*
+            Note: When searching it checks all group data to find a match, that means that if you search for "J" it will find groups that have "J" in any of the fields, not just the name.
+            For example if you search for "J" it will find groups that does not a "J" in the name but are within the Jazz genre.
+            I noticed this  quite late in the project and I did not have time to fix it, without breaking list paging and search function.
+            */
+        else {
             data = await _service.readMusicGroupsAsync(
                 currentPageNr,
                 true,
                 searchInput
             );
-
-            console.log("nullOrWhiteSpaceFalse=", searchInput);
+            // console.log("nullOrWhiteSpaceFalse=", searchInput);
         }
     });
-
-    // if (searchInput) {
-    //     data = await _service.readMusicGroupsAsync(currentPageNr, true, searchInput);
-    // } else {
-    //     data = await _service.readMusicGroupsAsync(currentPageNr, true,);
-    // }
 }
 
-// let amountCount = await _service.readInfoAsync();
-// let amountCount = await _service.readMusicGroupAsync();'
-
-// const groupCount = document.querySelector("#music-group-count");
-// // groupCount.innerText = `${amountCount.pageItems.length} music groups`;
-// groupCount.innerText = `${amountCount.db.nrSeededMusicGroups} music groups`;
-
-// await getMusicGroupsData();
-
+// async functions
 (async () => {
+    // On load event, show the music groups
     window.onload = showGroups();
 
-    console.log(data.pageItems?.length || 0);
-
+    // Gets the main div element
     const _list = document.querySelector("#list-of-items");
 
+    // Gets the page, search, and clear buttons and adds event listeners
     const btnPrev = document.querySelector("#prevBtn");
     const btnNext = document.querySelector("#nextBtn");
 
@@ -69,11 +66,25 @@ async function getMusicGroupsData() {
     const searchBtn = document.querySelector("#search-btn");
     searchBtn.addEventListener("click", clickHandlerSearch);
 
+    // Search with Enter key event
+    const searchInputBox = document.querySelector("#search-input");
+    searchInputBox.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            searchInput = searchInputBox.value;
+            clearSearch();
+            showGroups();
+            musicGroupCount();
+        }
+    });
+
+    // Used to clear and reset
     function clickHandlerAll(e) {
         clearSearch();
         showGroups();
     }
 
+    // Clear the search and reset the list
     function clickHandlerClear(e) {
         searchInput = "";
         document.querySelector("#search-input").value = "";
@@ -82,6 +93,7 @@ async function getMusicGroupsData() {
         musicGroupCount();
     }
 
+    // Clears the list and shows the music groups that match the search input
     function clickHandlerSearch(e) {
         searchInput = document.querySelector("#search-input").value;
         clearSearch();
@@ -89,7 +101,7 @@ async function getMusicGroupsData() {
         musicGroupCount();
     }
 
-    // //Paging
+    // Paging
     function clickHandlerNext(e) {
         if (currentPageNr < data.pageCount - 1) {
             currentPageNr++;
@@ -104,6 +116,7 @@ async function getMusicGroupsData() {
         clickHandlerAll();
     }
 
+    // Check if the current page is the first or last page and disable the buttons
     function pageButtonCheck() {
         if (currentPageNr === 0 && data.pageCount === 1) {
             document.querySelector("#prevBtn").disabled = true;
@@ -118,28 +131,64 @@ async function getMusicGroupsData() {
         }
     }
 
+    // Update the music group count
     function musicGroupCount() {
         const groupCount = document.querySelector("#music-group-count");
         groupCount.innerText = `${data.dbItemsCount} music groups found`;
     }
 
-    //Helpers
+    // Show the music groups in the list (data changes on search input)
     async function showGroups() {
-        // clearSearch();
-
-        // Check if search input is empty
-
+        // Get the music groups data from the service
         await getMusicGroupsData();
 
+        // Checks if its the first or last page
         await pageButtonCheck();
+
+        // Updates the music group count
         await musicGroupCount();
 
+        // Default div number
+        // Used to changes the background color of the list item div
+        listDivNr = 1;
+
+        // Creates the list of music groups
         for (const item of data.pageItems) {
             const div = document.createElement("div");
-            div.classList.add("col-md-12", "themed-grid-col");
 
-            div.innerText = item.name + " " + item.establishedYear;
-            // div.innerText = item.establishedYear;
+            // If the listDivNr is even, add theme-even
+            if (listDivNr % 2 === 0) {
+                div.classList.add(
+                    "col-md-12",
+                    "theme-even",
+                    "d-flex",
+                    "justify-content-evenly"
+                );
+            }
+            // If the listDivNr is odd, add theme-odd
+            else {
+                div.classList.add(
+                    "col-md-12",
+                    "theme-odd",
+                    "d-flex",
+                    "justify-content-evenly"
+                );
+            }
+            // Increments the listDivNr
+            listDivNr++;
+
+            // Creates the music group name and year elements
+            const mgName = document.createElement("p");
+            mgName.classList.add("music-group-name");
+            mgName.innerText = item.name;
+            div.appendChild(mgName);
+            const mgYear = document.createElement("p");
+            mgYear.classList.add("music-group-year");
+            mgYear.innerText = item.establishedYear;
+            div.appendChild(mgYear);
+
+            // Creates the music group group-info page link
+            // Adds a link id to the web address
             const link = document.createElement("a");
             link.href = `groupinfo.html?id=${item.musicGroupId}`;
             link.innerText = "Go to group info";
@@ -153,30 +202,10 @@ async function getMusicGroupsData() {
         }
     }
 
+    // Clears the search results
     function clearSearch() {
         while (_list.firstChild) {
             _list.removeChild(_list.firstChild);
         }
     }
-
-    function createRow() {
-        const div = document.createElement("div");
-        div.classList.add("col-md-12", "themed-grid-col");
-        return div;
-    }
-
-    // function search() {
-    //     const searchInput = document.querySelector("#search-input").value;
-    //     console.log(searchInput);
-
-    //     _service.readMusicGroupsAsync(0, true, searchInput).then((result) => {
-    //         data = result;
-    //         clearSearch();
-    //         showGroups();
-
-    //         // Update the music group count
-    //         const groupCount = document.querySelector("#music-group-count");
-    //         groupCount.innerText = `${data.pageItems.length} music groups found`;
-    //     });
-    // }
 })();
