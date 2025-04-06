@@ -3,7 +3,7 @@
 // Import the service class
 import musicService from "../database-script/music-group-services.js";
 
-    //Initialize the service
+//Initialize the service
 const _service = new musicService(
     `https://seido-webservice-307d89e1f16a.azurewebsites.net/api`
 );
@@ -14,7 +14,7 @@ let currentPageNr = 0;
 let searchInput = "";
 let listDivNr = 1;
 
-// Checks if the serach input is null or whitespace and returns true or false
+// Checks if the search input is null or whitespace and returns true or false
 async function isNullOrWhiteSpace(str) {
     return str == null || str.trim().length === 0;
 }
@@ -29,6 +29,11 @@ async function getMusicGroupsData() {
             // console.log("nullOrWhiteSpaceTrue=", searchInput);
         }
         // If the search input is not null or whitespace, get the music groups that match the search input
+        /*
+            Note: When searching it checks all group data to find a match, that means that if you search for "J" it will find groups that have "J" in any of the fields, not just the name.
+            For example if you search for "J" it will find groups that does not a "J" in the name but are within the Jazz genre.
+            I noticed this  quite late in the project and I did not have time to fix it, without breaking list paging and search function.
+            */
         else {
             data = await _service.readMusicGroupsAsync(
                 currentPageNr,
