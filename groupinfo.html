@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Music info" />
+        <meta name="description" content="Group info" />
         <meta name="author" content="" />
 
         <title>Group info</title>
@@ -30,11 +30,16 @@
         <!-- Bootstrap styles from their respective templates -->
         <link href="./css/bootstrap/bootstrap.min.css" rel="stylesheet" />
         <link href="./css/bootstrap/navbars-offcanvas.css" rel="stylesheet" />
-        <link href="./css/bootstrap/features.css" rel="stylesheet" />
-        <link href="./css/bootstrap/grid.css" rel="stylesheet" />
-        <link href="./css/bootstrap/sign-in.css" rel="stylesheet" />
-        <link href="./css/bootstrap/modals.css" rel="stylesheet" />
+        <!-- <link href="./css/bootstrap/features.css" rel="stylesheet" /> -->
+        <!-- <link href="./css/bootstrap/grid.css" rel="stylesheet" /> -->
+        <!-- <link href="./css/bootstrap/sign-in.css" rel="stylesheet" /> -->
+        <!-- <link href="./css/bootstrap/modals.css" rel="stylesheet" /> -->
+
+        <!-- Custom / override css -->
+        <link rel="stylesheet" href="./css/custom.css" />
     </head>
+    <!-- Header and Menu -->
+
     <body>
         <header>
             <nav
@@ -58,12 +63,7 @@
                     <div class="collapse navbar-collapse" id="navbarHead">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a
-                                    class="nav-link active"
-                                    aria-current="page"
-                                    href="./index.html"
-                                    >Home</a
-                                >
+                                <a class="nav-link" href="./index.html">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="./musicgroups.html"
@@ -76,40 +76,155 @@
             </nav>
         </header>
 
-
-
         <main>
+            <!-- Individual pages -->
 
-        <!-- Individual pages -->
-        <!-- Page List of groups -->
-        <div class="container px-4 py-4">
-            <!-- <h2 class="pb-2 border-bottom">List of quotes</h2>
-
-            <button class="btn btn-primary" id="clearBtn">Clear list</button>
-            <button class="btn btn-primary" id="loveQBtn">List love quotes</button>
-            <button class="btn btn-primary" id="allQBtn">List all quotes</button> -->
-
-            <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5">
-                <div class="col-md-7 col-lg-10">
-                    <div class="row mb-2 text-center">
-                        <div class="col-md-12 themed-grid-head-col">Quotes</div>
+            <div class="container-sm d-flex align-items-center flex-column">
+                <div class="row mb-2 col-md-12 d-flex justify-content-evenly" id="group-inf">
+                    <div class="col-sm-12">
+                        <h1 class="display-5 fw-medium mb-3 text-center">
+                            The AC/DC Prince
+                        </h1>
+                        <p class="fs-4 mb-3 text-center">1991</p>
                     </div>
-                    <div class="row mb-2 text-center" id="group-info">
-
+                    <div class="row col-sm-10">
+                        <div class="col-sm-6 mb-3">
+                            <h2 class="display-6 fw-light text-center">Members</h2>
+                            <div>
+                                <p class="theme-odd">Harry the White</p>
+                                <p class="theme-even">Draco Took</p>
+                                <p class="theme-odd">Albus Baggins</p>
+                                <p class="theme-even">Severus Dumbledore</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <h2 class="display-6 fw-light text-center">Albums</h2>
+                            <div>
+                                <p class="theme-odd">A Stairway Blue with fire</p>
+                                <p class="theme-even">
+                                    The great Purple Blue with friends
+                                </p>
+                                <p class="theme-odd">The Stairway Senor with friends</p>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
+
+            <div class="container-sm d-flex align-items-center flex-column">
+                <div class="row mb-2 col-md-12 d-flex justify-content-evenly" id="group-info"></div>
+            </div>
+        </main>
+        <!-- Part of page Frame -->
+        <!-- Footer with copyright notice -->
+        <div class="container">
+            <footer class="py-3 my-4">
+                <p class="text-center text-body-secondary border-top pt-3 mt-4">
+                    &copy; 2025 Snow Production Studio
+                </p>
+            </footer>
         </div>
-    </main>
 
+        <div
+            class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
+        >
+            <button
+                class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+                id="bd-theme"
+                type="button"
+                aria-expanded="false"
+                data-bs-toggle="dropdown"
+                aria-label="Toggle theme (auto)"
+            >
+                <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+                    <use href="./img/theme.svg#circle-half"></use>
+                </svg>
+                <span class="visually-hidden" id="bd-theme-text"
+                    >Toggle theme</span
+                >
+            </button>
+            <ul
+                class="dropdown-menu dropdown-menu-end shadow"
+                aria-labelledby="bd-theme-text"
+            >
+                <li>
+                    <button
+                        type="button"
+                        class="dropdown-item d-flex align-items-center"
+                        data-bs-theme-value="light"
+                        aria-pressed="false"
+                    >
+                        <svg
+                            class="bi me-2 opacity-50"
+                            width="1em"
+                            height="1em"
+                        >
+                            <use href="./img/theme.svg#sun-fill"></use>
+                        </svg>
+                        Light
+                        <svg class="bi ms-auto d-none" width="1em" height="1em">
+                            <use href="./img/theme.svg#check2"></use>
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        class="dropdown-item d-flex align-items-center"
+                        data-bs-theme-value="dark"
+                        aria-pressed="false"
+                    >
+                        <svg
+                            class="bi me-2 opacity-50"
+                            width="1em"
+                            height="1em"
+                        >
+                            <use href="./img/theme.svg#moon-stars-fill"></use>
+                        </svg>
+                        Dark
+                        <svg class="bi ms-auto d-none" width="1em" height="1em">
+                            <use href="./img/theme.svg#check2"></use>
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        class="dropdown-item d-flex align-items-center active"
+                        data-bs-theme-value="auto"
+                        aria-pressed="true"
+                    >
+                        <svg
+                            class="bi me-2 opacity-50"
+                            width="1em"
+                            height="1em"
+                        >
+                            <use href="./img/theme.svg#circle-half"></use>
+                        </svg>
+                        Auto
+                        <svg class="bi ms-auto d-none" width="1em" height="1em">
+                            <use href="./img/theme.svg#check2"></use>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
 
-<script src="./script/bootstrap/bootstrap.bundle.min.js"></script>
+        <!-- Part of page Frame -->
+        <!-- Bootstrap Javascript -->
+        <script src="./script/bootstrap/bootstrap.bundle.min.js"></script>
 
-    <!-- SeidoAB script helpers -->
-    <script src="./script/seido/modals.js"></script>
-    <script src="./script/seido/select-list-items.js"></script>
-    <script type="module" src="./script/site-scripts/groupinfo.js"></script>
+        <script src="./script/bootstrap/color-modes.js"></script>
 
+        <!-- SeidoAB script helpers -->
+        <script src="./script/seido/modals.js"></script>
+        <script src="./script/seido/select-list-items.js"></script>
+
+        <!-- SeidoAB script helpers -->
+        <script src="./script/seido/modals.js"></script>
+        <script src="./script/seido/select-list-items.js"></script>
+
+        <!-- Site scripts -->
+        <script type="module" src="./script/site-scripts/groupinfo.js"></script>
     </body>
 </html>

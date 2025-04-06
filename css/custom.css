@@ -163,6 +163,7 @@
 }
 .theme-odd p, .theme-even p {
     margin: 0;
+    padding: 0rem 1rem 0rem 1rem;
 }
 
 .toc {

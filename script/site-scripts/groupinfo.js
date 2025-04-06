@@ -44,68 +44,112 @@ async function getMusicGroupAlbums(albumId) {
 await getMusicGroupData();
 
 (async () => {
-    window.onload = showGroups();
+    window.onload = showGroupData();
 
     //Helpers
-    async function showGroups() {
+    async function showGroupData() {
         //Clear first
-
         // await getMusicGroupData();
 
         const groupInfo = document.querySelector("#group-info");
-        groupInfo.classList.add("col-md-12", "themed-grid-col");
+
         // showGroups
         //creat a row for every quote and append it to _list
         // for (const item of groupData) {
         // const div = createRow();
-        const div = document.createElement("div");
-        // div.classList.add("col-md-12", "themed-grid-col");
 
+        // div.classList.add("col-md-12", "themed-grid-col");
+        const divHeader = document.createElement("div");
+        divHeader.classList.add("col-sm-12");
         const h1 = document.createElement("h1");
-        h1.classList.add("display-5", "fw-bold", "lh-1", "mb-3");
+        h1.classList.add("display-5", "fw-medium", "mb-3", "text-center");
         h1.innerText = groupData.name;
-        div.appendChild(h1);
+        divHeader.appendChild(h1);
 
         const p = document.createElement("p");
-        p.classList.add("lead", "fw-bold", "mb-3");
-        p.innerText = groupData.establishedYear;
-        div.appendChild(p);
+        p.classList.add("fs-4", "mb-3", "text-center");
+        p.innerText = `Established: ${groupData.establishedYear}`;
+        divHeader.appendChild(p);
 
         // p.classList.add("lead", "fw-bold", "mb-3");
         // div.innerText = item.name + " " + item.establishedYear + " " + item.musicGroupId ;
 
         // div.appendChild(link);
 
-        groupInfo.appendChild(div);
+        groupInfo.appendChild(divHeader);
+
+        const infoDiv = document.createElement("div");
+        infoDiv.classList.add("row", "col-sm-10");
+
         await groupArtists();
         await groupAlbums();
-
+        
+        groupInfo.appendChild(infoDiv);
         // }
 
         async function groupArtists() {
-            const artistDiv = document.createElement("div");
+            let memberNr = 1;
+
+            const membersInfoDiv = document.createElement("div");
+            membersInfoDiv.classList.add("col-sm-6", "mb-3");
+            const h2 = document.createElement("h2");
+            h2.classList.add("display-6", "fw-light", "text-center");
+            h2.innerText = "Members";
+            membersInfoDiv.appendChild(h2);
+            const membersDiv = document.createElement("div");
+
             for (const artist of groupData.artistsId) {
                 await getMusicGroupArtists(artist);
-                const artistsP = document.createElement("p");
-                artistsP.classList.add("lead", "fw-bold", "mb-3");
-                artistsP.innerText =
-                    artistData.firstName + " " + artistData.lastName;
-                artistDiv.appendChild(artistsP);
+
+                if (memberNr % 2 === 0) {
+                    const artistsP = document.createElement("p");
+                    artistsP.classList.add("theme-even");
+                    artistsP.innerText =
+                        artistData.firstName + " " + artistData.lastName;
+                    membersDiv.appendChild(artistsP);
+                } else {
+                    const artistsP = document.createElement("p");
+                    artistsP.classList.add("theme-odd");
+                    artistsP.innerText =
+                        artistData.firstName + " " + artistData.lastName;
+                    membersDiv.appendChild(artistsP);
+                }
+                memberNr++;
+                membersInfoDiv.appendChild(membersDiv);
             }
-            groupInfo.appendChild(artistDiv);
+            infoDiv.appendChild(membersInfoDiv);
         }
 
         async function groupAlbums() {
-            const albumDiv = document.createElement("div");
+            let albumNr = 1;
+
+            const albumsInfoDiv = document.createElement("div");
+            albumsInfoDiv.classList.add("col-sm-6", "mb-3");
+            const h2 = document.createElement("h2");
+            h2.classList.add("display-6", "fw-light", "text-center");
+            h2.innerText = "Albums";
+            albumsInfoDiv.appendChild(h2);
+            const albumsDiv = document.createElement("div");
             for (const album of groupData.albumsId) {
-                console.log(album);
                 await getMusicGroupAlbums(album);
-                const albumP = document.createElement("p");
-                albumP.classList.add("lead", "fw-bold", "mb-3");
-                albumP.innerText = albumData.name;
-                albumDiv.appendChild(albumP);
+
+                if (albumNr % 2 === 0) {
+                    const albumP = document.createElement("p");
+                    albumP.classList.add("theme-even");
+                    albumP.innerText = albumData.name;
+                    albumsDiv.appendChild(albumP);
+                } else {
+                    const albumP = document.createElement("p");
+                    albumP.classList.add("theme-odd");
+                    albumP.innerText = albumData.name;
+                    albumsDiv.appendChild(albumP);
+                }
+                albumNr++;
+                albumsInfoDiv.appendChild(albumsDiv);
+
+
             }
-            groupInfo.appendChild(albumDiv);
+            infoDiv.appendChild(albumsInfoDiv);
         }
     }
 })();
